@@ -6,9 +6,11 @@ import "./globals.css";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
+
 } from "@/components/ui/sidebar";
+
 import { AppSidebar } from "@/components/app-sidebar";
+import { Header } from "@/components/header";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -43,12 +45,7 @@ export default async function RootLayout({
           <AppSidebar />
           <main className="w-full">
             <SidebarInset>
-              <header className="bg-background sticky top-0 flex h-16 shrink-0 items-center gap-2 border-b  px-4">
-                <SidebarTrigger className="-ml-1 cursor-pointer" />
-                <h1 className="text-xl font-semibold font-sans">
-                  Nubiq Sales Dashboard
-                </h1>
-              </header>
+             <Header />
               <main className="p-4 font-sans bg-gray-100 min-h-screen">
                 {children}
               </main>
