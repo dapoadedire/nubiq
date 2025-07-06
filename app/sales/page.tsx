@@ -94,14 +94,14 @@ export default function SalesPage() {
               <div
                 key={index}
                 className={cn(
-                  "flex items-center rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer",
+                  "flex items-center rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer",
                   getColorClass(item.color, "100")
                 )}
               >
                 <div className="flex flex-col items-start gap-3 w-full">
                   <div
                     className={cn(
-                      "rounded-full text-white p-2.5",
+                      "rounded-md text-white p-2",
                       getColorClass(item.color, "300")
                     )}
                   >
