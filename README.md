@@ -1,4 +1,8 @@
-# Nubiq
+# Nubiq(WIP)
+
+
+![nubiq-iota vercel app_sales](https://github.com/user-attachments/assets/87b328df-9d1f-4985-a12c-52dde69bfbcc)
+
 
 A modern admin dashboard built with Next.js, React 19, and Tailwind CSS.
 
