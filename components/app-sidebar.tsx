@@ -28,6 +28,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LucideIcon } from "lucide-react";
+import { ApiStatusIndicator } from "./api-status-indicator";
 
 // Define types for our navigation items
 type NavItem = {
@@ -45,10 +46,14 @@ type NavSection = {
 export function AppSidebar() {
   const pathname = usePathname();
 
-  // Function to check if a path is active
   const isActive = (path: string) => pathname === path;
 
   // Dashboard section
+  // === SNIP: imports remain unchanged ===
+
+  // Reorganized Nav Sections
+
+  // Dashboard
   const dashboardSection: NavSection = {
     items: [
       {
@@ -59,7 +64,6 @@ export function AppSidebar() {
     ],
   };
 
-  // Sales section
   const salesSection: NavSection = {
     title: "Sales",
     items: [
@@ -73,20 +77,27 @@ export function AppSidebar() {
         url: "/orders",
         icon: ShoppingCart,
       },
+    ],
+  };
+
+ 
+  const inventorySection: NavSection = {
+    title: "Inventory",
+    items: [
       {
-        title: "Inventory",
+        title: "Products",
         url: "/inventory",
         icon: Boxes,
       },
     ],
   };
 
-  // Customers section
+  // Customers
   const customersSection: NavSection = {
     title: "Customers",
     items: [
       {
-        title: "Manage",
+        title: "Users",
         url: "/customers",
         icon: Users,
       },
@@ -98,9 +109,9 @@ export function AppSidebar() {
     ],
   };
 
-  // System section
-  const systemSection: NavSection = {
-    title: "System",
+  // Settings & Notifications
+  const settingsSection: NavSection = {
+    title: "Settings",
     items: [
       {
         title: "Notifications",
@@ -108,14 +119,14 @@ export function AppSidebar() {
         icon: Bell,
       },
       {
-        title: "Settings",
+        title: "Preferences",
         url: "/settings",
         icon: Settings,
       },
     ],
   };
 
-  // Footer items
+  // Footer
   const footerItems: NavItem[] = [
     {
       title: "Help & Support",
@@ -129,34 +140,36 @@ export function AppSidebar() {
     },
   ];
 
-  // All sections for easier management
+  // All sections
   const allSections: NavSection[] = [
     dashboardSection,
     salesSection,
+    inventorySection,
     customersSection,
-    systemSection,
+    settingsSection,
   ];
 
   return (
-    <Sidebar>
+    <Sidebar className="font-sans">
       <SidebarHeader>
         <div
           className={cn(
-            "flex items-center gap-2 px-4 py-3.5",
+            "flex items-center gap-2 px-2 py-4",
             "bg-primary/5 rounded-lg border border-border/50",
             "hover:bg-primary/10 transition-colors duration-200"
           )}
         >
           <Notebook className="h-5 w-5 text-primary/80" />
           <h2 className="font-semibold tracking-tight font-sans">Nubiq</h2>
+          <ApiStatusIndicator />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="pt-5">
+      <SidebarContent className="pt-4">
         {allSections.map((section, sectionIndex) => (
           <SidebarGroup
             key={section.title || `section-${sectionIndex}`}
-            className={sectionIndex > 0 ? "mt-4" : ""}
+            className={sectionIndex > 0 ? "mt-2" : ""}
           >
             {section.title && (
               <SidebarGroupLabel>{section.title}</SidebarGroupLabel>

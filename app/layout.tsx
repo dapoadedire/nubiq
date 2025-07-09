@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
-import {
-  SidebarInset,
-  SidebarProvider,
-
-} from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/header";
 
-const ibmPlexSans = IBM_Plex_Sans({
+import Providers from "./providers";
+
+const ibmPlexSans = Inter({
   subsets: ["latin"],
   variable: "--font-ibm-plex-sans",
   weight: "400",
 });
-const ibmPlexMono = IBM_Plex_Mono({
+const ibmPlexMono = Fira_Code({
   subsets: ["latin"],
   variable: "--font-ibm-plex-mono",
   weight: "400",
@@ -41,17 +38,19 @@ export default async function RootLayout({
       <body
         className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased`}
       >
-        <SidebarProvider defaultOpen={defaultOpen}>
-          <AppSidebar />
-          <main className="w-full">
-            <SidebarInset>
-             <Header />
-              <main className="p-4 font-sans bg-gray-100 min-h-screen">
-                {children}
-              </main>
-            </SidebarInset>
-          </main>
-        </SidebarProvider>
+        <Providers>
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
+            <main className="w-full">
+              <SidebarInset>
+                <Header />
+                <main className="p-4 font-sans bg-gray-100 min-h-screen">
+                  {children}
+                </main>
+              </SidebarInset>
+            </main>
+          </SidebarProvider>
+        </Providers>
       </body>
     </html>
   );

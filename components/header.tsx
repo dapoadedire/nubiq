@@ -11,7 +11,7 @@ export const Header = () => {
   const isMobile = useIsMobile();
 
   return (
-    <header className="bg-background sticky top-0 z-10 flex h-16 shrink-0 items-center border-b px-4 shadow-sm">
+    <header className="font-sans bg-background sticky top-0 z-10 flex h-16 shrink-0 items-center border-b px-4 shadow-sm">
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-3">
           <SidebarTrigger className="text-foreground hover:text-primary transition-colors cursor-pointer" />
